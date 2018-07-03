@@ -6,7 +6,7 @@ class Ball {
     this.x = 0.1 * w;
     this.speed = 0;
     this.radius = 5;
-    this.color = "red";
+    this.color = "#f7f7f7";
     this.alive = true;
   }
 
@@ -15,10 +15,14 @@ class Ball {
   }
 
   draw(ctx) {
+    if (this.alive){
+    	ctx.fillStyle = this.color;
+    } else {
+    	ctx.fillStyle = '#ff0000';
+    }
   	ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
-    ctx.fillStyle = this.color;
     ctx.fill();
   }
 
@@ -75,10 +79,9 @@ class Door {
 	}
 
 	draw (ctx){
+	    // ctx.fillStyle = "#f7f7f7";	
 		ctx.rect(this.x, 0, this.thickness, this.y);
 		ctx.rect(this.x, this.h, this.thickness, this.y + this.hole - this.h);
-	    ctx.fillStyle = "black";
-
 		ctx.fill();
 	}
 

@@ -1,7 +1,18 @@
 body {
-	background-color: lightblue;
+	color: #f7f7f7;
+	background-color: #141414;
 }
 
 #gameCanvas {
-	background-color: white;
+	background-color: #3d3d3d;
+}
+
+
+#tf-flappy-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.element-container {
+	margin: auto;
 }

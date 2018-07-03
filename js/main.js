@@ -15,12 +15,12 @@ class Ball {
   }
 
   draw(ctx) {
+  	ctx.beginPath();
     if (this.alive){
     	ctx.fillStyle = this.color;
     } else {
     	ctx.fillStyle = '#ff0000';
     }
-  	ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fill();
@@ -79,10 +79,12 @@ class Door {
 	}
 
 	draw (ctx){
-	    // ctx.fillStyle = "#f7f7f7";	
+  		ctx.beginPath();
+	    ctx.fillStyle = "#f7f7f7";	
 		ctx.rect(this.x, 0, this.thickness, this.y);
 		ctx.rect(this.x, this.h, this.thickness, this.y + this.hole - this.h);
 		ctx.fill();
+		ctx.closePath();
 	}
 
 	is_collided(pos){
@@ -140,8 +142,7 @@ function step(timestamp) {
 	
 	if (doors[0] && doors[0].isOutside()){
 		doors.shift();
-		score ++;
-		console.log(score);
+		score = ball.alive ? score+1 : 0;
 	}
 	requestAnimationFrame(step);
 }
